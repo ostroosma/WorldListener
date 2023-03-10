@@ -25,6 +25,7 @@ dueca_add_dco()
 # detect any needed libraries here with CMake's mechanisms, such as
 # find_package, pkg_check_modules, or low-level find_path/find_library
 pkg_check_modules(SNDFILE sndfile)
+pkg_check_modules(SDL2 sdl2)
   
 # if you need specific define's for the compilation, give them here
 set(CUSTOM_OPTIONS )
@@ -35,7 +36,7 @@ dueca_add_module(
 
   # specify include directories, add for used libraries as needed
   INCLUDEDIRS ${DCO_INCLUDE_DIRS}
-  ${SNDFILE_INCLUDE_DIRS}
+  ${SNDFILE_INCLUDE_DIRS} ${SDL2_INCLUDE_DIRS}
   
   # optionally add more DUECA components (e.g., a graphics toolkit?)
   DUECA_COMPONENTS
@@ -47,7 +48,7 @@ dueca_add_module(
 
   # optionally specify libraries used for this module
   LIBRARIES
-  ${SNDFILE_LIBRARIES}
+  ${SNDFILE_LIBRARIES} ${SDL2_LIBRARIES}
   
   # give compiler options
   COMPILEOPTIONS ${CUSTOM_OPTIONS}
